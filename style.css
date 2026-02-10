@@ -1,111 +1,102 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #fafafa;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     margin: 0;
-    flex-direction: column;
+    color: #262626;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 32px;
-    margin-bottom: 32px;
-}
-
-.login-box, .signup-box {
+.login-container, .signup-container, .get-app {
     background-color: #fff;
     border: 1px solid #dbdbdb;
     border-radius: 1px;
-    margin: 0 0 10px;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 10px 0;
+    padding: 20px;
+    text-align: center;
     width: 350px;
-}
-
-.login-box {
-    padding-top: 36px;
-    padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .instagram-logo {
-    height: 51px;
-    margin-bottom: 36px;
+    margin-bottom: 20px;
+    width: 175px; /* Adjust as needed */
 }
 
-.login-form {
+form {
     display: flex;
     flex-direction: column;
-    width: 268px;
 }
 
-.login-form input {
+input {
     background-color: #fafafa;
     border: 1px solid #dbdbdb;
     border-radius: 3px;
-    padding: 9px 8px;
+    padding: 10px 8px;
     margin-bottom: 6px;
-    font-size: 12px;
-    line-height: 18px;
-    outline: none;
+    font-size: 14px;
+    color: #262626;
 }
 
-.login-form button {
+input::placeholder {
+    color: #8e8e8e;
+}
+
+button {
     background-color: #0095f6;
     color: #fff;
     border: none;
-    border-radius: 8px; /* Instagram uses slightly rounded corners now */
-    padding: 8px 16px;
+    border-radius: 4px;
+    padding: 8px 0;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 8px;
-    margin-bottom: 10px;
-    opacity: 0.7; /* Initially disabled-like */
-    transition: opacity 0.2s ease-in-out;
 }
 
-.login-form button:enabled {
-    opacity: 1;
+button:hover {
+    background-color: #0085e6;
 }
 
-.or-separator {
+.divider {
     display: flex;
     align-items: center;
-    width: 268px;
-    margin: 10px 0;
-}
-
-.or-separator .line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #dbdbdb;
-}
-
-.or-separator .or-text {
-    color: #8e8e8e;
+    text-align: center;
+    margin: 15px 0;
     font-size: 13px;
-    font-weight: 600;
-    margin: 0 18px;
+    color: #8e8e8e;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .25em;
 }
 
 .facebook-login {
     color: #385185;
     font-weight: 600;
-    font-size: 14px;
     text-decoration: none;
-    margin-top: 12px;
+    font-size: 14px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .facebook-icon {
+    width: 16px;
     height: 16px;
     margin-right: 8px;
 }
@@ -113,70 +104,33 @@ body {
 .forgot-password {
     color: #00376b;
     font-size: 12px;
-    margin-top: 12px;
     text-decoration: none;
 }
 
-.signup-box p {
+.signup-container {
     font-size: 14px;
-    color: #262626;
-    margin: 15px;
 }
 
-.signup-box a {
+.signup-container a {
     color: #0095f6;
     font-weight: 600;
     text-decoration: none;
 }
 
 .get-app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.get-app p {
     font-size: 14px;
-    color: #262626;
-    margin-bottom: 10px;
+    padding: 10px 0;
+    border: none;
+    background-color: transparent;
 }
 
 .app-stores {
     display: flex;
-    gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .app-stores img {
     height: 40px;
-}
-
-footer {
-    margin-top: 64px;
-    margin-bottom: 52px;
-    width: 100%;
-    text-align: center;
-}
-
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: #8e8e8e;
-    font-size: 12px;
-    text-decoration: none;
-}
-
-.copyright {
-    color: #8e8e8e;
-    font-size: 12px;
-}
-
-.copyright span:first-child {
-    margin-right: 16px;
+    margin: 0 5px;
 }
