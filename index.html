@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram logo" class="instagram-logo">
+            <form class="login-form">
+                <input type="text" placeholder="Phone number, username, or email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" disabled>Log In</button>
+            </form>
+            <div class="or-separator">
+                <div class="line"></div>
+                <div class="or-text">OR</div>
+                <div class="line"></div>
+            </div>
+            <a href="#" class="facebook-login">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1200px-Facebook_Logo_%282019%29.png" alt="Facebook logo" class="facebook-icon">
+                Log in with Facebook
+            </a>
+            <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+        <div class="signup-box">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+        <div class="get-app">
+            <p>Get the app.</p>
+            <div class="app-stores">
+                <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/180ae7a0bcf7.png" alt="App Store">
+                <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/e9cd846dc748.png" alt="Google Play">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Meta</a>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Jobs</a>
+            <a href="#">Help</a>
+            <a href="#">API</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Top Accounts</a>
+            <a href="#">Locations</a>
+            <a href="#">Instagram Lite</a>
+            <a href="#">Threads</a>
+            <a href="#">Contact Uploading & Non-Users</a>
+            <a href="#">Meta Verified</a>
+        </div>
+        <div class="copyright">
+            <span>English</span>
+            <span>&copy; 2024 Instagram from Meta</span>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.querySelector('.login-form');
+        const usernameInput = form.querySelector('input[type="text"]');
+        const passwordInput = form.querySelector('input[type="password"]');
+        const loginButton = form.querySelector('button[type="submit"]');
+
+        function checkInputs() {
+            if (usernameInput.value.length > 0 && passwordInput.value.length > 0) {
+                loginButton.removeAttribute('disabled');
+                loginButton.style.opacity = '1';
+            } else {
+                loginButton.setAttribute('disabled', 'true');
+                loginButton.style.opacity = '0.7';
+            }
+        }
+
+        usernameInput.addEventListener('input', checkInputs);
+        passwordInput.addEventListener('input', checkInputs);
+
+        // Initial check
+        checkInputs();
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // IMPORTANT: In a real application, you would send these credentials
+            // securely to a backend server for authentication.
+            // DO NOT save them to a local file or log them in production.
+            console.log('Username/Email:', usernameInput.value);
+            console.log('Password:', passwordInput.value);
+            alert('Login attempt (check console for values). In a real app, this data would be sent securely to a backend server for verification.');
+        });
+    </script>
+</body>
+</html>
